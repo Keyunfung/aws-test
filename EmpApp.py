@@ -20,12 +20,74 @@ db_conn = connections.Connection(
 
 )
 output = {}
-table = 'employee'
+table = 'leave'
 
 @app.route("/")
 def home():
     return render_template('home.html')
 
+@app.route("/leave/", methods=['GET','POST'])
+def leave():
+    return render_template('leave.html')
+
+# @app.route("/leave/updatestartdate", methods=['GET','POST'])
+# def updatestartdate():
+#     return render_template('leave-output.html')
+
+# @app.route("/leave/updatestartdate/info", methods=['GET','POST'])
+# def updatestartdateinfo():
+#     if request.method == 'POST':
+#         emp_id = request.form['emp_id']
+#         leave_startdate = dt.datetime.strptime(request.form['leave_startdate'], '%m/%d/%Y').strftime(format="%d %B %Y")
+        
+#         cursor = db_conn.cursor()
+#         select_sql = "SELECT * FROM leave where emp_id = (%s) and leave_startdate = (%s)"
+#         try:
+#             cursor.execute(select_sql, (emp_id, leave_startdate))
+#         finally:
+#                 cursor.close()
+        
+#         return render_template('leave_output.html')
+#     else:
+#         emp_id = request.args.get('emp_id')
+#         leave_startdate = request.args.get('leave_startdate')
+#         return render_template('leave-output.html')
+
+@app.route("/leave/results", methods=['GET','POST'])
+def salaryresult():
+    if request.method == 'POST':
+        emp_id = request.form['emp_id']
+        startdate = date(request.form['startdate'])
+        enddate = date(request.form['enddate'])
+        description = string(request.form['description'])
+        status = string(request.form['status'])
+        statusdate = dt.datetime.strptime(request.form['approvedate']).strftime(format="%d %B %Y")
+        statustime = dt.datetime.strptime(request.form['approvetime']).strftime(format="%H:$M:%S")
+        insert_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s)"
+        cursor = db_conn.cursor()
+        try:
+            cursor.execute(insert_sql, (emp_id, startdate, enddate, description, statusdate, statustime))
+            db_conn.commit()
+        finally:
+            cursor.close()
+
+        print("all modification done...")
+        return render_template('payroll-output.html', title = 'New Leave Added Successfully', emp_id = emp_id, startdate = startdate)
+    else:
+        emp_id = request.form['emp_id']
+        startdate = request.form['startdate'])
+        enddate = request.form['enddate'])
+        description = request.form['description'])
+        status = request.form['status'])
+        statusdate = request.form['approvedate']
+        statustime = request.form['approvetime']
+        return render_template('leave-output.html')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80, debug=True)
+
+
+#################### PAYROLL ####################
 @app.route("/payroll/", methods=['GET','POST'])
 def payroll():
     return render_template('payroll.html')
