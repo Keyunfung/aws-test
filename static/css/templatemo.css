@@ -159,7 +159,7 @@ p, a {font-weight: 400;}
 /* Work */
 /* Singel Work */
 #work_single_banner {
-  background-image: url('../static/image/banner-bg-02.jpg');
+  background-image: url('./../image/banner-bg-02.jpg');
   background-position: center center;
   background-size: cover;
   height: 100%;
