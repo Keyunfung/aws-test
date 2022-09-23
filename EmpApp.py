@@ -77,8 +77,8 @@ def salaryresult():
         emp_id = request.form['emp_id']
         startdate = request.form['startdate']
         enddate = request.form['enddate']
-        description = request.form['description'])
-        status = request.form['status'])
+        description = request.form['description']
+        status = request.form['status']
         statusdate = request.form['approvedate']
         statustime = request.form['approvetime']
         return render_template('leave-output.html')
