@@ -57,12 +57,12 @@ def leave():
 def salaryresult():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        startdate = date(request.form['startdate'])
-        enddate = date(request.form['enddate'])
+        startdate = date(request.form['startdate'], '%m/%d/%Y').strftime(format="%d %B %Y")
+        enddate = date(request.form['enddate'], '%m/%d/%Y').strftime(format="%d %B %Y")
         description = string(request.form['description'])
         status = string(request.form['status'])
-        statusdate = dt.datetime.strptime(request.form['approvedate']).strftime(format="%d %B %Y")
-        statustime = dt.datetime.strptime(request.form['approvetime']).strftime(format="%H:$M:%S")
+        statusdate = dt.datetime.strptime(request.form['approvedate'], '%m/%d/%Y').strftime(format="%d %B %Y")
+        statustime = dt.datetime.strptime(request.form['approvetime'], '%m/%d/%Y').strftime(format="%H:$M:%S")
         insert_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         try:
@@ -75,8 +75,8 @@ def salaryresult():
         return render_template('payroll-output.html', title = 'New Leave Added Successfully', emp_id = emp_id, startdate = startdate)
     else:
         emp_id = request.form['emp_id']
-        startdate = request.form['startdate'])
-        enddate = request.form['enddate'])
+        startdate = request.form['startdate']
+        enddate = request.form['enddate']
         description = request.form['description'])
         status = request.form['status'])
         statusdate = request.form['approvedate']
