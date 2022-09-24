@@ -28,15 +28,15 @@ def home():
 
 @app.route("/about/", methods=['GET','POST'])
 def leave():
-    return render_template('leave.html')
+    return render_template('about.html')
 
 @app.route("/employee/", methods=['GET','POST'])
 def leave():
-    return render_template('leave.html')
+    return render_template('employee.html')
 
 @app.route("/attendance/", methods=['GET','POST'])
 def leave():
-    return render_template('leave.html')
+    return render_template('attendance.html')
 
 @app.route("/leave/", methods=['GET','POST'])
 def leave():
