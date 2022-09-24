@@ -7,8 +7,8 @@ Cloud Computing Assignment
 #!/bin/bash
 yum update -y
 sudo yum install git
-git clone https://github.com/Keyunfung/AWS.git
-cd AWS
+git clone https://github.com/Keyunfung/aws-test.git
+cd aws-test
 sudo pip3 install flask
 sudo pip3 install pymysql
 sudo pip3 install boto3
