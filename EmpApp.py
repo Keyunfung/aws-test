@@ -26,6 +26,18 @@ table = 'leave'
 def home():
     return render_template('home.html')
 
+@app.route("/about/", methods=['GET','POST'])
+def leave():
+    return render_template('leave.html')
+
+@app.route("/employee/", methods=['GET','POST'])
+def leave():
+    return render_template('leave.html')
+
+@app.route("/attendance/", methods=['GET','POST'])
+def leave():
+    return render_template('leave.html')
+
 @app.route("/leave/", methods=['GET','POST'])
 def leave():
     return render_template('leave.html')
