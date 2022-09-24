@@ -48,8 +48,8 @@ def leaveoutput():
         emp_id = request.form['emp_id']
         startdate = dt.datetime.strptime(request.form['startdate'], '%Y-%m-%d').strftime(format="%d-%B-%Y")
         enddate = dt.datetime.strptime(request.form['enddate'], '%Y-%m-%d').strftime(format="%d-%B-%Y")
-        description = string(request.form['description'])
-        status = string(request.form['status'])
+        description = request.form['description']
+        status = request.form['status']
         b4format_statusdate = datetime.now()
         b4format_statustime = datetime.now()
         statusdate = b4format_statusdate.strftime("%d-%B-%Y")
@@ -80,7 +80,7 @@ def leaveoutput():
 def leavestatus():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        status = string(request.form['status'])
+        status = request.form['status']
         b4format_statusdate = datetime.now()
         b4format_statustime = datetime.now()
         statusdate = b4format_statusdate.strftime("%d-%B-%Y")
