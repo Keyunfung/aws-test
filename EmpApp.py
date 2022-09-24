@@ -23,22 +23,27 @@ output = {}
 table = 'leave'
 
 @app.route("/")
+@exception_handler
 def home():
     return render_template('home.html')
 
 @app.route("/about/", methods=['GET','POST'])
+@exception_handler
 def leave():
     return render_template('about.html')
 
 @app.route("/employee/", methods=['GET','POST'])
+@exception_handler
 def leave():
     return render_template('employee.html')
 
 @app.route("/attendance/", methods=['GET','POST'])
+@exception_handler
 def leave():
     return render_template('attendance.html')
 
 @app.route("/leave/", methods=['GET','POST'])
+@exception_handler
 def leave():
     return render_template('leave.html')
 
@@ -66,6 +71,7 @@ def leave():
 #         return render_template('leave-output.html')
 
 @app.route("/leave/results", methods=['GET','POST'])
+@exception_handler
 def salaryresult():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
@@ -101,18 +107,22 @@ if __name__ == '__main__':
 
 #################### PAYROLL ####################
 @app.route("/payroll/", methods=['GET','POST'])
+@exception_handler
 def payroll():
     return render_template('payroll.html')
 
 @app.route("/payroll/addsalary", methods=['GET','POST'])
+@exception_handler
 def addsalary():
     return render_template('calculate-payroll.html')
 
 @app.route("/payroll/updatesalary", methods=['GET','POST'])
+@exception_handler
 def updatesalary():
     return render_template('update-payroll.html')
 
 @app.route("/payroll/updatesalary/info", methods=['GET','POST'])
+@exception_handler
 def updatesalaryinfo():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
@@ -132,6 +142,7 @@ def updatesalaryinfo():
         return render_template('update-salary-payroll.html')
 
 @app.route("/payroll/addsalary/results", methods=['GET','POST'])
+@exception_handler
 def salaryresult():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
